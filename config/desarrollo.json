@@ -1,0 +1,6 @@
+{
+    "configToken": {
+        "SEED": "CRUDApiUser",
+        "EXPIRATION": "30min"
+    }
+}
