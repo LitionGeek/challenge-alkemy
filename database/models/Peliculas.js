@@ -9,8 +9,8 @@ const Pelicula = sequelize.define("pelicula",{
     ,
     titulo: {
         type:DataTypes.STRING,
-        unique:{
-            args:true,
+        allowNull:{
+            args:false,
             msg:"La pelicula ya existe"
         } 
     }

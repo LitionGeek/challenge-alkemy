@@ -7,18 +7,16 @@ function generarToken(email){
 
 function validarToken(req,res,next){
     const authHeader = req.headers['authorization'];
-    console.log(!authHeader==null)
     if(authHeader!=null){
-        console.log('accesstoken')
         const accessToken = authHeader.split(' ')[1];
         jwt.verify(accessToken,process.env.SECRET_KEY,(err,user)=>{
             if(err){
-                console.log("error")
                 return res.status(403).json({
-                    err
+                    ok:false,
+                    msg:"Token incorrecto"
                 });
             }else{
-                console.log('Else')
+                console.log('Token valido')
                 next();
             }
         })

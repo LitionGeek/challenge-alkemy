@@ -4,7 +4,9 @@ module.exports = (schema)=>{
             await schema.validateAsync(req.body);
             next();
         }catch(error){
-            res.send(error.message)
+            res.status(400).json({
+                error:"El campo "+error.details[0].path[0]+" es obligatorio"
+            })
         }
     }
 }

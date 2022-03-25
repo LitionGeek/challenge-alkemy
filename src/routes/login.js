@@ -31,7 +31,6 @@ router.post('/login', async (req, res) => {
         const users = await Usuario.findOne({ where: { email } });
         if (users) {
             return res.status(200).json({
-                email,
                 accessToken: token
             })
         } else {
@@ -41,6 +40,11 @@ router.post('/login', async (req, res) => {
             })
         }
 
+    }else{
+        return res.status(404).json({
+            ok: false,
+            error: 'No ingreso un mail'
+        })
     }
 });
 

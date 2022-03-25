@@ -1,9 +1,11 @@
 const express = require('express');
-const sequelize = require('../../database');
 const Pelicula = require('../../database/models/Peliculas');
 const Personaje = require('../../database/models/Personajes');
 const router = express.Router();
 const {validarToken} = require('../../controllers/auth');
+const validarSchema = require('../../middleware/validarSchema');
+const { personajeSchema } = require('../../schemas/schemas');
+
 
 /*Obtener Personaje*/
 router.get('/characters',validarToken,async(req,res)=>{
@@ -12,59 +14,16 @@ router.get('/characters',validarToken,async(req,res)=>{
         attributes:['imagen','nombre'],
         include:[Pelicula]
     });
-    console.log(Personaje)
+
     res.status(200).json({
         personaje
     });
 })
 
-router.get('/characters/:nombre',validarToken,async(req,res)=>{
-    const {nombre} = req.params; 
-    console.log(nombre)
-    await Personaje.findAll({
-        attributes:['imagen','nombre'],
-        where:{nombre},
-        include:[Pelicula]
-    }).then(personaje=>{
-        return res.status(200).json({
-            personaje
-        });
-    }).catch(error=>{
-        return res.status(404).json({
-            ok:false,
-            msg:'El personaje no existe'
-        });
-    })
-   
-})
-
-router.get('/characters/:age',validarToken,async(req,res)=>{
-    const {age} = req.params; 
-    const Personaje = await Personaje.findAll({
-        attributes:['imagen','nombre'],
-        where:{edad:name}
-    });
-    console.log(Personaje)
-    res.status(200).json({
-        Personaje:Personaje
-    });
-})
-
-router.get('/characters/:movie',validarToken,async(req,res)=>{
-    const {movie} = req.params; 
-    const Personaje = await Personaje.findAll({
-        attributes:['imagen','nombre'],
-        where:{pelicula:movie}
-    });
-    console.log(Personaje)
-    res.status(200).json({
-        Personaje:Personaje
-    });
-})
 
 
 /*Crear Personaje*/
-router.post('/personaje',validarToken,async(req,res)=>{
+router.post('/personaje',validarSchema(personajeSchema),validarToken,async(req,res)=>{
     const personajeObj = armarObj(req.body);
     if(personajeObj){
         await Personaje.create(personajeObj)
@@ -76,7 +35,7 @@ router.post('/personaje',validarToken,async(req,res)=>{
         }).catch(error=>{
             return res.status(400).json({
                 ok:false,
-                msg:error
+                msg:"error"
             })
         });
     }else{
@@ -109,7 +68,7 @@ router.delete('/personaje',validarToken,async(req,res)=>{
     }
 })
 
-
+/*Editar personaje*/
 router.put('/personaje/:nombrereq',validarToken,async(req,res)=>{
     const personajeObj = armarObj(req.body);
     const {nombrereq} = req.params;
@@ -123,7 +82,7 @@ router.put('/personaje/:nombrereq',validarToken,async(req,res)=>{
                 msg:'Personaje editado'
             })
         }).catch(error=>{
-            return res.status(400).json({
+            return res.status(404).json({
                 ok:false,
                 msg:error
             })

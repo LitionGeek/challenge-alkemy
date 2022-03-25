@@ -18,7 +18,6 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use(require('./routes'));
 app.use(require('./routes/links'));
 app.use('/auth', login)
 app.use('/', personajes)

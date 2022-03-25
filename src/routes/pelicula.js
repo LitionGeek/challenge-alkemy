@@ -1,6 +1,4 @@
 const express = require('express');
-const { func } = require('prop-types');
-const sequelize = require('../../database');
 const Pelicula = require('../../database/models/Peliculas');
 const Personaje = require('../../database/models/Personajes');
 const router = express.Router();
@@ -32,23 +30,20 @@ router.get('/listmovies',validarToken, async (req, res) => {
 
 /* Muestra un resultado segun el query params */
 router.get('/movies',validarToken, async (req, res) => {
-    const { genero,order,name } = req.query;
-    let filtro;    
-    if(genero){
-        filtro = {where:{genero}}
+    const { genero,order,nombre } = req.query; 
+    const filtro = buscarPorQueryParams(req.query)
+    const pelicula = await Pelicula.findAll(filtro); 
+    if(pelicula){
+        return res.status(200).json({
+            ok:true,
+            pelicula
+        });
     }else{
-        if(name){
-            filtro = {where:{nombre:name}};
-        }else{
-            filtro = {order:[["fechaCreacion",order]]}
-        }
+        return res.status(400).json({
+            ok:false,
+            msg:"ERROR. No existe pelicula con ese nombre"
+        });
     }
-    const personajes = await Pelicula.findAll(filtro); 
-    console.log(personajes)
-    res.status(200).json({
-        ok:true,
-        personajes
-    });
 })
 
 /*Crear una nueva peliucula */
@@ -66,7 +61,7 @@ router.post('/movie',validarToken, validarSchema(peliculaSchema), async (req, re
         }).catch(error => {
             return res.status(400).json({
                 ok: false,
-                msg: error.errors
+                msg: error
             })
         })
 
@@ -113,7 +108,6 @@ router.put('/movie/:titulo',validarToken, async (req, res) => {
 /*Crear un nuevo objeto */
 function armarObj({ imagen, titulo, calificacion, genero, nombrePersonaje }){
     const fechaActual = moment().format('L'); 
-    console.log(fechaActual)
     const objPelicula = {
         imagen,
         titulo,
@@ -122,30 +116,23 @@ function armarObj({ imagen, titulo, calificacion, genero, nombrePersonaje }){
         genero,
         nombrePersonaje
     };
+    console.log(nombrePersonaje)
     return objPelicula;
 }
 
 function buscarPorQueryParams(params){
-    const { genre,order,name } = params;
-    console.log(params)
+    const { genero,order,name } = params;
     let filtro;
-    if(genre){
-        filtro = genre;
+    if(genero){
+        filtro = {where:{genero}};
     }else{
-        if(name){
-            filtro = name;
+        if(nombre){
+            filtro = {where:{nombrePersonaje:name}};
         }else{
-            filtro = order;
+            filtro = {order:[["fechaCreacion",order]]}
         }
     }
     return filtro;
-  /*   const personajes = await Pelicula.findAll({
-        where: { genero: genre }
-    }); */
-/*     console.log(personajes)
-    res.status(200).json({
-        personajes: personajes
-    }); */
 }
 
 module.exports = router;
