@@ -1,0 +1,289 @@
+{
+  "info": {
+    "_postman_id": "cdbd0b85-d576-4933-aaec-ea8df5c60408",
+    "name": "Disney",
+    "description": "Challenge de ingreso, API Disney con crud peliuclas y crud Personajes, tiene un registro y login que genera un token que sera necesario para llamar a los distintos endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Personaje",
+      "item": [
+        {
+          "name": "getPersonajes",
+          "_postman_id": "5b101c7c-00c1-46b0-9886-fb04bbf1550c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:4000/characters",
+            "description": "Obtiene todos los personajes y las peliculas asociadas"
+          },
+          "response": []
+        },
+        {
+          "name": "searchByPersonaje",
+          "_postman_id": "95b666ce-0805-4d4c-af18-60b463fe2b86",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZXhpc18xMjBAbGl2ZS5jb20uYXIiLCJpYXQiOjE2NDgxNTY2NzYsImV4cCI6MTY0ODE2MDI3Nn0.tfFjsT9OjBADmwyB6CH5IM1uR7ys9LXrQeKj52AdG7w"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:4000/characters/Fiona",
+            "description": "Obtiene las peliculas y datos del personaje"
+          },
+          "response": []
+        },
+        {
+          "name": "createPersonajes",
+          "_postman_id": "83869d2b-03de-4906-85de-328449fcd864",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"imagen\":\"dsadas\",\r\n   \"nombre\":\"y\",\r\n   \"edad\":5,\r\n   \"peso\":\"Fiona\",\r\n   \"historia\":\"dasdasd\",\r\n   \"pelicula\":\"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/personaje",
+            "description": "Crea un personaje, el personaje puede tener imagen,nombre, edad,peso,historia y peliculas"
+          },
+          "response": []
+        },
+        {
+          "name": "deletePersonajes",
+          "_postman_id": "141f379d-8b60-4ef1-9a0a-32dbd843f9b8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\":\"Fiona\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/personaje",
+            "description": "Elimina el personaje segun el nombre enviado en el body"
+          },
+          "response": []
+        },
+        {
+          "name": "putPersonajes",
+          "_postman_id": "ce6b4b69-fd8d-4106-99cd-7e8997bd4cc5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"imagen\":\"dsadas\",\r\n   \"nombre\":\"Fiona\",\r\n   \"edad\":52,\r\n   \"peso\":150,\r\n   \"historia\":\"Sherk 2\",\r\n   \"pelicula\":\"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/personaje/Fiona",
+            "description": "Edita el personaje enviado por parametros, y modifica los atributos enviados"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "73c246a1-aff6-4ff8-b7ac-efbd79381b4a"
+    },
+    {
+      "name": "Peliculas",
+      "item": [
+        {
+          "name": "getMovies",
+          "_postman_id": "4244d98a-955c-409d-8d39-129d707a1c14",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:4000/listmovies",
+            "description": "Obtiene la lista de peliculas con los personajes asociados"
+          },
+          "response": []
+        },
+        {
+          "name": "createMovies",
+          "_postman_id": "250d4957-5104-409a-a69b-c283beb5c4ae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"imagen\":\"dsadas\",\r\n   \"titulo\":\"Xsaa23aa\",\r\n   \"calificacion\":2,\r\n   \"personajeAsociado\":\"Fiona\",\r\n   \"genero\":\"dasdasd\",\r\n   \"nombre\":\"y\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/movie"
+          },
+          "response": []
+        },
+        {
+          "name": "deleteMovies",
+          "_postman_id": "4a8bd84f-881e-48cc-9a69-4f621176eccc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\":\"Xsaa23aa\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/movie",
+            "description": "Elimina una pelicula segun el titulo enviado en el body"
+          },
+          "response": []
+        },
+        {
+          "name": "putMovies",
+          "_postman_id": "310705a8-0de1-4cfd-88d6-6da8f2495046",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"imagen\":\"dsadas\",\r\n   \"titulo\":\"Xsaa23aa\",\r\n   \"calificacion\":3,\r\n   \"personajeAsociado\":\"Fion2a\",\r\n   \"genero\":\"dasdasd\",\r\n   \"nombre\":\"x\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/movie/xas",
+            "description": "Edita una pelicula segun el titulo enviado por parametro, editara los campos enviados en el body"
+          },
+          "response": []
+        },
+        {
+          "name": "getMoviesWithOrder",
+          "_postman_id": "5ac0f087-215c-4b7c-9a46-6630b9b97d09",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/movies?order=DESC",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "movies"
+              ],
+              "query": [
+                {
+                  "key": "order",
+                  "value": "DESC"
+                }
+              ]
+            },
+            "description": "Realiza un filtrado por peliculas, existen 3 tipos:\n\n/movies?genero=genero, traera las peliculas con el genero ingresado,\n\n/movies?order=order, traera las peliculas con order ingresado, existen dos formas:\n\norder=DESC O order=ASC\n\n/movies?name=nombre,traera las peliculas que tengan el nombre ingresado en el parametro"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "47b3a135-c0aa-4afa-a704-93cc225d580e"
+    },
+    {
+      "name": "AUTH",
+      "item": [
+        {
+          "name": "loginUsuario",
+          "_postman_id": "846c5cc0-48b3-4441-bfad-169abe06129f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"email\":\"alexis_120@live.com.ar\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/auth/login",
+            "description": "Solo se ingresa el correo, se genera un token el cual se utilizara para los servicios:\n\nPeliculas:\n\n/movies/\n\n/movie/..\n\nPersonajes:\n\n/characters/..\n\n/personajes/.."
+          },
+          "response": []
+        },
+        {
+          "name": "registerUsuario",
+          "_postman_id": "0d15d97b-49b2-4b19-ad1b-003df897d8e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"alan@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:4000/auth/register",
+            "description": "Al ingresar el correo electronico en el body, se da de alta al cliente, y le envia un email"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "bcdd08a0-5d2d-494b-ad33-00477481f86f"
+    }
+  ]
+}
