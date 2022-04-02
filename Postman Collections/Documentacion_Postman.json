@@ -11,7 +11,7 @@
       "item": [
         {
           "name": "getPersonajes",
-          "_postman_id": "5b101c7c-00c1-46b0-9886-fb04bbf1550c",
+          "id": "5b101c7c-00c1-46b0-9886-fb04bbf1550c",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -25,7 +25,7 @@
         },
         {
           "name": "searchByPersonaje",
-          "_postman_id": "95b666ce-0805-4d4c-af18-60b463fe2b86",
+          "id": "95b666ce-0805-4d4c-af18-60b463fe2b86",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -45,16 +45,22 @@
         },
         {
           "name": "createPersonajes",
-          "_postman_id": "83869d2b-03de-4906-85de-328449fcd864",
+          "id": "83869d2b-03de-4906-85de-328449fcd864",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsYW4yQGdtYWlsLmNvbSIsImlhdCI6MTY0ODkwNDU0OCwiZXhwIjoxNjQ4OTA4MTQ4fQ.BcvONxntK9KWueo8GGdUFsgUunp1MWAvg75TmupJoDo"
+              }
+            },
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"imagen\":\"dsadas\",\r\n   \"nombre\":\"y\",\r\n   \"edad\":5,\r\n   \"peso\":\"Fiona\",\r\n   \"historia\":\"dasdasd\",\r\n   \"pelicula\":\"\"\r\n}",
+              "raw": "{\r\n   \"imagen\":\"dsadas\",\r\n   \"nombre\":\"y\",\r\n   \"edad\":5,\r\n   \"peso\":2,\r\n   \"historia\":\"dasdasd\",\r\n   \"pelicula\":\"\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -68,7 +74,7 @@
         },
         {
           "name": "deletePersonajes",
-          "_postman_id": "141f379d-8b60-4ef1-9a0a-32dbd843f9b8",
+          "id": "141f379d-8b60-4ef1-9a0a-32dbd843f9b8",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -91,7 +97,7 @@
         },
         {
           "name": "putPersonajes",
-          "_postman_id": "ce6b4b69-fd8d-4106-99cd-7e8997bd4cc5",
+          "id": "ce6b4b69-fd8d-4106-99cd-7e8997bd4cc5",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -113,14 +119,14 @@
           "response": []
         }
       ],
-      "_postman_id": "73c246a1-aff6-4ff8-b7ac-efbd79381b4a"
+      "id": "73c246a1-aff6-4ff8-b7ac-efbd79381b4a"
     },
     {
       "name": "Peliculas",
       "item": [
         {
           "name": "getMovies",
-          "_postman_id": "4244d98a-955c-409d-8d39-129d707a1c14",
+          "id": "4244d98a-955c-409d-8d39-129d707a1c14",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -134,7 +140,7 @@
         },
         {
           "name": "createMovies",
-          "_postman_id": "250d4957-5104-409a-a69b-c283beb5c4ae",
+          "id": "250d4957-5104-409a-a69b-c283beb5c4ae",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -156,7 +162,7 @@
         },
         {
           "name": "deleteMovies",
-          "_postman_id": "4a8bd84f-881e-48cc-9a69-4f621176eccc",
+          "id": "4a8bd84f-881e-48cc-9a69-4f621176eccc",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -179,7 +185,7 @@
         },
         {
           "name": "putMovies",
-          "_postman_id": "310705a8-0de1-4cfd-88d6-6da8f2495046",
+          "id": "310705a8-0de1-4cfd-88d6-6da8f2495046",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -202,7 +208,7 @@
         },
         {
           "name": "getMoviesWithOrder",
-          "_postman_id": "5ac0f087-215c-4b7c-9a46-6630b9b97d09",
+          "id": "5ac0f087-215c-4b7c-9a46-6630b9b97d09",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -231,14 +237,14 @@
           "response": []
         }
       ],
-      "_postman_id": "47b3a135-c0aa-4afa-a704-93cc225d580e"
+      "id": "47b3a135-c0aa-4afa-a704-93cc225d580e"
     },
     {
       "name": "AUTH",
       "item": [
         {
           "name": "loginUsuario",
-          "_postman_id": "846c5cc0-48b3-4441-bfad-169abe06129f",
+          "id": "846c5cc0-48b3-4441-bfad-169abe06129f",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -261,7 +267,7 @@
         },
         {
           "name": "registerUsuario",
-          "_postman_id": "0d15d97b-49b2-4b19-ad1b-003df897d8e5",
+          "id": "0d15d97b-49b2-4b19-ad1b-003df897d8e5",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -283,7 +289,7 @@
           "response": []
         }
       ],
-      "_postman_id": "bcdd08a0-5d2d-494b-ad33-00477481f86f"
+      "id": "bcdd08a0-5d2d-494b-ad33-00477481f86f"
     }
   ]
 }
